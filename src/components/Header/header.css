@@ -1,0 +1,90 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #181c2e;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar div {
+  background: url("../../assets/img/cover.png");
+  background-color: #181c2e;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  padding-top: 30px;
+}
+
+.sidebar div img {
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  width: 90px;
+  height: 90px;
+  -webkit-filter: drop-shadow(2px 3px 6px #121212);
+          filter: drop-shadow(2px 3px 6px #121212);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.sidebar a {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 16px;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 28px;
+  -webkit-transition: ease-in-out .4s;
+  transition: ease-in-out .4s;
+}
+
+.sidebar a:hover {
+  background-color: #121212;
+  color: #fff;
+}
+
+.sidebar a svg {
+  margin-right: .5em;
+}
+
+.sidebar ~ a {
+  cursor: pointer;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar div {
+    display: none;
+  }
+  .sidebar a {
+    float: left;
+    padding-left: 16px;
+  }
+  .sidebar a svg {
+    display: none;
+  }
+  .content {
+    margin-left: 0;
+  }
+}
+/*# sourceMappingURL=header.css.map */

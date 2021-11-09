@@ -1,0 +1,113 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: .8em;
+  margin-bottom: 1em;
+}
+
+.container .form-profile {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.container .form-profile .label-avatar {
+  width: 280px;
+  height: 280px;
+  margin: -20px 0px 0px -20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+}
+
+.container .form-profile .label-avatar input {
+  display: none;
+}
+
+.container .form-profile .label-avatar span {
+  z-index: 99;
+  position: absolute;
+  opacity: .7;
+  -webkit-transition: all .8s;
+  transition: all .8s;
+}
+
+.container .form-profile .label-avatar span:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.container .form-profile img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  overflow: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.container .form-profile label {
+  margin-bottom: .5em;
+  font-size: 1.4em;
+}
+
+.container .form-profile input, .container .form-profile text-area, .container .form-profile select, .container .form-profile button {
+  margin-bottom: 1em;
+  background-color: #f8f8f8;
+  padding: 7px;
+  border: 0;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.container .form-profile input:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+.container .form-profile button {
+  max-width: 500px;
+  height: 35px;
+  border: 0;
+  border-radius: 7px;
+  background-color: #181c2e;
+  color: #fff;
+  font-size: 1.3em;
+  margin-bottom: .2em;
+}
+
+.container .signout-btn {
+  padding: 5px 20px;
+  background-color: transparent;
+  border: 1px solid #121212;
+  border-radius: 5px;
+  font-size: 1.2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=profile.css.map */

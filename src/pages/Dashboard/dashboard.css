@@ -1,0 +1,49 @@
+.dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard span {
+  margin: 2em 0;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.new {
+  float: right;
+  background-color: #83bf02;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .5em .5em;
+  margin: 0 0 1em 0;
+  border-radius: 8px;
+  -webkit-transition: ease-in 0.2s;
+  transition: ease-in 0.2s;
+}
+
+.new:hover {
+  background-color: #5fd204;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.new svg {
+  margin-right: .5em;
+}
+/*# sourceMappingURL=dashboard.css.map */

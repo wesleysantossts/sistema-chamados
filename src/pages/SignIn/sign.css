@@ -1,0 +1,94 @@
+.container-center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #121212;
+}
+
+.container-center .login {
+  width: 600px;
+  background: #efefef;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px 10px 8px 8px;
+}
+
+.container-center .login .login-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #181c2e;
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.container-center .login .login-area img {
+  padding: 20px;
+  width: 170px;
+  height: 130px;
+}
+
+.container-center .login form {
+  width: 90%;
+  margin-top: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container-center .login form h1 {
+  text-align: center;
+  margin-bottom: 0.5em;
+  color: #181c2e;
+}
+
+.container-center .login form input {
+  margin-bottom: 15px;
+  height: 35px;
+  border: 0;
+  border-radius: 7px;
+  padding: 10px;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+.container-center .login form button {
+  height: 35px;
+  border: 0;
+  border-radius: 7px;
+  background-color: #181c2e;
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.container-center .login a {
+  margin: 1.5em 0;
+  color: #181c2e;
+  cursor: pointer;
+}
+/*# sourceMappingURL=sign.css.map */

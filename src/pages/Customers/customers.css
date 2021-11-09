@@ -1,0 +1,10 @@
+.customerContainer {
+  margin: 0 .8em;
+}
+
+@media screen and (min-width: 700px) {
+  .customerContainer {
+    margin-left: 210px;
+  }
+}
+/*# sourceMappingURL=customers.css.map */

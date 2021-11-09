@@ -1,0 +1,18 @@
+.title {
+  margin: .2em 0 1em 0;
+  padding: .8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.title span {
+  margin-left: .5em;
+  font-size: 1.5em;
+}
+/*# sourceMappingURL=title.css.map */
