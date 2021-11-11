@@ -3,6 +3,8 @@ import { AuthContext } from "../../contexts/auth"
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 
+import {toast} from "react-toastify";
+
 function SignUp() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -15,11 +17,13 @@ function SignUp() {
     e.preventDefault();
 
     if(!!nome && !!email && !!senha){
-      signUp(nome, email, senha)
-      alert("Usuário cadastrado com sucesso!")
+      signUp(nome, email, senha);
+      // toast.success("Usuário cadastrado com sucesso!");
+
+      return
     }
 
-    alert("Você deixou de inserir algum dado!")
+    toast.error("Você deixou de inserir algum dado!")
   };
 
   return (
@@ -32,7 +36,7 @@ function SignUp() {
           <h1>Cadastrar</h1>
           <input type="text" placeholder="Seu nome" value={nome} onChange={(e)=> setNome(e.target.value)} />
           <input type="text" placeholder="E-mail" value={email} onChange={(e)=> setEmail(e.target.value)}/>
-          <input type="password" placeholder="****" value={senha} onChange={(e)=> setSenha(e.target.value)} />
+          <input type="password" placeholder="******" value={senha} onChange={(e)=> setSenha(e.target.value)} />
 
           <button type="submit">Cadastrar</button>
         </form>

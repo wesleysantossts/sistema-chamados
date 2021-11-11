@@ -6,7 +6,8 @@ import Header from "../../components/Header";
 import Title from "../../components/Title";
 
 import "./new.css";
-import { FiPlusCircle } from "react-icons/fi"
+import { FiPlusCircle } from "react-icons/fi";
+import { toast } from "react-toastify"
 
 export default function New(){
   const [cliente, setCliente] = useState([]);
@@ -68,9 +69,29 @@ export default function New(){
   }, [])
 
   // Envento do formulário
-  function handleRegister(e){
-    e.preventDefault()
-  }
+  async function handleRegister(e){
+    e.preventDefault();
+
+    await firebase.firestore().collection("chamados")
+    .add({
+      created: new Date(),
+      cliente: cliente[clienteSelecionado].nomeFantasia,
+      clienteId: cliente[clienteSelecionado].id,
+      assunto: assunto,
+      status: status,
+      complemento: complemento,
+      userId: user.uid
+    })
+    .then(()=>{
+      toast.success("Chamado registrado com sucesso!");
+      setComplemento("");
+      setClienteSelecionado(0);
+    })
+    .catch((error)=>{
+      console.log("DEU RUIM!!!", error);
+      toast.error("Ops! Parece que deu algum erro. Tente novamente mais tarde.");
+    })
+  };
 
   // Chamado quando troca de assunto
   function handleChangeSelect(e){
