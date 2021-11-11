@@ -96,6 +96,7 @@ export default function AuthProvider({children}){
     localStorage.removeItem("SistemaUser");
     setUser(null);
     toast.success("Até a próxima!")
+    setLoadingAuth(false)
   }
 
   return(

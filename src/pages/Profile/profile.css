@@ -68,7 +68,7 @@
   font-size: 1.4em;
 }
 
-.container .form-profile input, .container .form-profile text-area, .container .form-profile select, .container .form-profile button {
+.container .form-profile input, .container .form-profile textarea, .container .form-profile select, .container .form-profile button {
   margin-bottom: 1em;
   background-color: #f8f8f8;
   padding: 7px;
@@ -76,6 +76,7 @@
   border-radius: 5px;
   width: 100%;
   max-width: 500px;
+  font-family: "poppins";
 }
 
 .container .form-profile input:disabled {

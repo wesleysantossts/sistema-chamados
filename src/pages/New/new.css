@@ -1,0 +1,46 @@
+textarea {
+  resize: none;
+  height: 150px;
+  width: 100%;
+}
+
+.status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 100%;
+}
+
+.status input[type="radio"] {
+  display: inline;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 0;
+  width: 20px;
+}
+
+.status input[type="radio"]:not(:first-child) {
+  margin-left: 8%;
+}
+
+.status span {
+  padding-left: .5em;
+  font-size: 1.1em;
+}
+
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=new.css.map */
