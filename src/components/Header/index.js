@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 
 import "./header.css";
-import { FiHome, FiUser, FiSettings } from "react-icons/fi";
+import { FiHome, FiUser, FiSettings, FiLogOut } from "react-icons/fi";
 import avatar from "../../assets/img/avatar.png"
 
 export default function Header(){
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
   
   return(
     <div className="sidebar">
@@ -29,6 +29,11 @@ export default function Header(){
         <FiSettings color="rgba(255,255,255, 0.7)" size={24} />
         Configurações
       </Link>
+      
+      <a onClick={signOut}> 
+        <FiLogOut color="rgba(255,255,255, 0.7)" size={24} />
+        Sair
+      </a>
     </div>
   )
 }

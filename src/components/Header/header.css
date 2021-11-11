@@ -30,7 +30,7 @@
      object-fit: cover;
 }
 
-.sidebar a {
+.sidebar a, .sidebar button {
   color: rgba(255, 255, 255, 0.7);
   padding: 16px;
   text-decoration: none;
@@ -49,12 +49,12 @@
   transition: ease-in-out .4s;
 }
 
-.sidebar a:hover {
+.sidebar a:hover, .sidebar button:hover {
   background-color: #121212;
   color: #fff;
 }
 
-.sidebar a svg {
+.sidebar a svg, .sidebar button svg {
   margin-right: .5em;
 }
 
