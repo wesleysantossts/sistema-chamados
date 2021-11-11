@@ -51,7 +51,7 @@ export default function AuthProvider({children}){
 
         setUser(data);
         storageUser(data);
-        setLoading(false);
+        setLoadingAuth(false);
         toast.success("Usuário cadastrado com sucesso!")
       })
     })
