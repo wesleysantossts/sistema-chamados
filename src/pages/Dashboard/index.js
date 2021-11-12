@@ -14,7 +14,7 @@ import {format} from "date-fns";
 const listRef = firebase.firestore().collection("chamados").orderBy("created", "desc")
 
 export default function Dashboard(){
-  const [chamados, setChamados] = useState([1]);
+  const [chamados, setChamados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -84,6 +84,33 @@ export default function Dashboard(){
     setLoadingMore(false)
   };
 
+  //> botão carregar mais dados
+  async function handleMore(){
+    setLoadingMore(true);
+
+    await listRef.startAfter(lastDocs).limit(5)
+    .get()
+    .then((snapshot)=>{ 
+      updateState(snapshot); 
+    })
+  }
+
+  if(loading){
+    return(
+      <div>
+        <Header />
+        <div className="content">
+        <Title name="Chamados">
+          <FiMessageSquare size={24} />
+        </Title>
+
+        <div className="container dashboard">
+          <span>Buscando dados...</span>
+        </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -121,24 +148,32 @@ export default function Dashboard(){
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td data-label="Cadastrado em">20/11/2021</td>
-                    <td data-label="Cliente">Dev Master</td>
-                    <td data-label="Assunto">Suporte</td>
-                    <td data-label="Status">
-                      <span className="badge" style={{backgroundColor: '#5cb85c'}}>Em aberto</span>
-                    </td>
-                    <td data-label="#">
-                      <button className="action" style={{backgroundColor: "#3583f6"}}>
-                        <FiSearch color="white" />
-                      </button>
-                      <button className="action" style={{backgroundColor: "#F6a935"}}>
-                        <FiEdit2 color="white" />
-                      </button>
-                    </td>
-                  </tr>
+                  {chamados.map((item, index)=>{
+                    return(
+                    <tr key={index}>
+                      <td data-label="Cadastrado em">{item.createdFormated}</td>
+                      <td data-label="Cliente">{item.cliente}</td>
+                      <td data-label="Assunto">{item.assunto}</td>
+                      <td data-label="Status">
+                        {/* como usar a validação condicional no atributo */}
+                        <span className="badge" style={{backgroundColor: (item.status === "Aberto") ? null : (item.status === "Progresso") ?  "purple" : (item.status === "Atendido") ? "#F6a935" : "#5cb85c" }}>{item.status}</span>
+                      </td>
+                      <td data-label="#">
+                        <button className="action" style={{backgroundColor: "#3583f6"}}>
+                          <FiSearch color="white" />
+                        </button>
+                        <button className="action" style={{backgroundColor: "#F6a935"}}>
+                          <FiEdit2 color="white" />
+                        </button>
+                      </td>
+                    </tr>
+                    )
+                  })}
                 </tbody>
               </table>
+
+              {loadingMore && <h3 style={{marginTop: 15}}>Buscando dados...</h3>}
+              {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar mais</button>}
             </>
           )}
       </div>
