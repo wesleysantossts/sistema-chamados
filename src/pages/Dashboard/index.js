@@ -4,6 +4,7 @@ import firebase from "../../services/firebaseConnection";
 
 import Header from "../../components/Header";
 import Title from "../../components/Title";
+import Modal from "../../components/Modal";
 
 import "./dashboard.css";
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from "react-icons/fi";
@@ -19,12 +20,28 @@ export default function Dashboard(){
   const [loadingMore, setLoadingMore] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [lastDocs, setLastDocs] = useState();
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [detail, setDetail] = useState();
 
 
   useEffect(()=>{
-
+    async function loadChamados(){
+      //- .limit(qtdNumber) - método usado para limitar o número de items que retornará a cada consulta
+      await listRef.limit(5)
+      .get()
+      .then((snapshot)=>{
+        updateState(snapshot)
+      })
+      .catch((error)=>{
+        console.error("Deu ruim.", error);
+        toast.error("Erro ao fazer a consulta. Tente novamente mais tarde.");
+        setLoadingMore(false)
+      });
+  
+      setLoading(false)
+    };
     
-    // opção por chamar a função ao invés de escrever ela aqui dentro para poder chamar em outros lugares do código também
+    // Pode-se escrever a função fora do bloco do useEffect e chamar a função aqui ao invés de escrever ela aqui dentro, isso para poder chamar ela em outros lugares do código também
     loadChamados()
 
     return() => {
@@ -32,21 +49,7 @@ export default function Dashboard(){
     }
   }, []);
 
-  async function loadChamados(){
-    //- .limit(qtdNumber) - método usado para limitar o número de items que retornará a cada consulta
-    await listRef.limit(5)
-    .get()
-    .then((snapshot)=>{
-      updateState(snapshot)
-    })
-    .catch((error)=>{
-      console.error("Deu ruim.", error);
-      toast.error("Erro ao fazer a consulta. Tente novamente mais tarde.");
-      setLoadingMore(false)
-    });
-
-    setLoading(false)
-  };
+  
 
   async function updateState(snapshot){
     // snapshot.size - propriedade do snapshot que indica o tamanho dele
@@ -94,6 +97,14 @@ export default function Dashboard(){
       updateState(snapshot); 
     })
   }
+
+  //> Função do modal
+  function togglePostModal(item){
+    setShowPostModal(!showPostModal);
+    setDetail(item);
+  }
+
+
 
   if(loading){
     return(
@@ -156,15 +167,15 @@ export default function Dashboard(){
                       <td data-label="Assunto">{item.assunto}</td>
                       <td data-label="Status">
                         {/* como usar a validação condicional no atributo */}
-                        <span className="badge" style={{backgroundColor: (item.status === "Aberto") ? null : (item.status === "Progresso") ?  "purple" : (item.status === "Atendido") ? "#F6a935" : "#5cb85c" }}>{item.status}</span>
+                        <span className="badge" style={{backgroundColor: (item.status === "Aberto") ? null : (item.status === "Progresso") ?  "#AAA" : (item.status === "Atendido") ? "#5cb85c" : "#F6a935"}}>{item.status}</span>
                       </td>
                       <td data-label="#">
-                        <button className="action" style={{backgroundColor: "#3583f6"}}>
+                        <button className="action" style={{backgroundColor: "#3583f6"}} onClick={()=> togglePostModal(item)}>
                           <FiSearch color="white" />
                         </button>
-                        <button className="action" style={{backgroundColor: "#F6a935"}}>
+                        <Link className="action2" style={{backgroundColor: "#F6a935"}} to={`/new/${item.id}`}>
                           <FiEdit2 color="white" />
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                     )
@@ -176,6 +187,15 @@ export default function Dashboard(){
               {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar mais</button>}
             </>
           )}
+
+          <div>
+            {showPostModal && (
+              <Modal 
+                conteudo={detail}
+                close={togglePostModal}
+              />
+            )}
+          </div>
       </div>
     </div>
   )

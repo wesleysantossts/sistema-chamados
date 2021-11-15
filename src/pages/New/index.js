@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 import firebase from "../../services/firebaseConnection";
+import { useHistory, useParams } from "react-router-dom";
 
 import Header from "../../components/Header";
 import Title from "../../components/Title";
@@ -12,6 +13,7 @@ import { toast } from "react-toastify"
 export default function New(){
   const [cliente, setCliente] = useState([]);
   const [clienteSelecionado, setClienteSelecionado] = useState(0);
+  const [idCustomer, setIdCustomer] = useState(false);
 
   const [assunto, setAssunto] = useState('Suporte');
   const [status, setStatus] = useState('Em aberto');
@@ -19,6 +21,9 @@ export default function New(){
 
   const [loadCustomers, setLoadCustomers] = useState(true);
   const { user } = useContext(AuthContext);
+
+  const { id } = useParams();
+  const history = useHistory();
 
   useEffect(()=>{
     async function loadCustomer(){
@@ -56,7 +61,11 @@ export default function New(){
         }
 
         setCliente(lista);
-        setLoadCustomers(false)
+        setLoadCustomers(false);
+
+        if(id){
+          loadId(lista)
+        }
       })
       .catch((error)=>{ 
         console.log("DEU RUIM!!!", error);
@@ -66,11 +75,58 @@ export default function New(){
     };
 
     loadCustomer()
-  }, [])
+  }, [id]);
+
+  async function loadId(lista){
+    await firebase.firestore().collection("chamados").doc(id)
+    .get()
+    .then((snapshot)=>{
+      setAssunto(snapshot.data().assunto);
+      setStatus(snapshot.data().status);
+      setComplemento(snapshot.data().complemento)
+
+      // findIndex(item => condição) - método usado para encontrar o index do item desejado
+      let index = lista.findIndex(item => item.id === snapshot.data().clienteId);
+
+      setClienteSelecionado(index);
+      setIdCustomer(true)
+    })
+    .catch((error)=>{
+      console.log("Deu ruim", error);
+      setIdCustomer(false)
+    })
+  };
 
   // Envento do formulário
   async function handleRegister(e){
     e.preventDefault();
+
+    // se o usuário tiver escolhido a opção de editar o chamado
+    if(idCustomer){
+      await firebase.firestore().collection("chamados")
+      .doc(id)
+      .update({
+        cliente: cliente[clienteSelecionado].nomeFantasia,
+        clienteId: cliente[clienteSelecionado].id,
+        assunto: assunto,
+        status: status,
+        complemento: complemento,
+        userId: user.uid
+      })
+      .then(()=>{
+        toast.success("Chamado editado com sucesso!")
+        setClienteSelecionado(0);
+        setComplemento("");
+        //> history.push(rota) - usado para redirecionar o cliente para uma rota desejada 
+        history.push("/dashboard")
+      })
+      .catch((error)=> {
+        toast.error("Chamado não atualizado. Tente mais tarde.")
+        console.log(error)
+      })
+
+      return
+    };
 
     await firebase.firestore().collection("chamados")
     .add({
@@ -155,8 +211,13 @@ export default function New(){
 
             <label>Complemento</label><br/>
             <textarea type="text" placeholder="Descreva seu problema (opcional)." name="message" value={complemento} onChange={(e)=> setComplemento(e.target.value)} /><br/>
-
-            <button type="submit">Registrar</button>
+            
+            { idCustomer ? (
+              <button type="submit">Editar</button> 
+            ) : (
+              <button type="submit">Registrar</button>
+            )
+            }
           </form> 
         </div>
       </div>

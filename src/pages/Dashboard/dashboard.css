@@ -88,6 +88,21 @@ table td .action svg {
   vertical-align: middle;
 }
 
+table td .action2 {
+  border: 0;
+  padding: 2.5px 5px;
+  margin-right: 2px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+table td .action2 svg {
+  vertical-align: middle;
+}
+
 table td .badge {
   padding: 3px;
   border-radius: 3px;

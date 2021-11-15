@@ -17,7 +17,7 @@ export default function AuthProvider({children}){
         setUser(JSON.parse(storageUser));
         setLoading(false);
       }
-      setLoading(false);
+      setLoading(false)
     })()
   }, [])
 
@@ -52,11 +52,12 @@ export default function AuthProvider({children}){
         setUser(data);
         storageUser(data);
         setLoadingAuth(false);
-        toast.success("Usuário cadastrado com sucesso!")
+        toast.success("Bem vindo a plataforma!")
       })
     })
     .catch((error)=> console.error("DEU RUIM!!!", error));
-    toast.error("Ops! Algo deu errado.")
+    toast.error("Ops! Algo deu errado.");
+    setLoadingAuth(false)
   };
 
   //> Logando o usuário
