@@ -120,8 +120,8 @@ export default function Profile(){
 
               <input type="file" accept="image/*" onChange={handleFile}/><br/>
               {avatarUrl ? 
-              <img src={avatarUrl} height="250" alt="Foto de perfil" /> :
-              <img src={avatar} height="250" alt="Foto de perfil" /> }
+              <img src={avatarUrl} alt="Foto de perfil" /> :
+              <img src={avatar} alt="Foto de perfil" /> }
             </label>
             <label>Nome</label><br/>
             <input type="text" value={nome} onChange={(e)=> setNome(e.target.value)} /><br/>

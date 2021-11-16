@@ -56,7 +56,7 @@ export default function AuthProvider({children}){
       })
     })
     .catch((error)=> console.error("DEU RUIM!!!", error));
-    toast.error("Ops! Algo deu errado.");
+    // toast.error("Ops! Algo deu errado.");
     setLoadingAuth(false)
   };
 
