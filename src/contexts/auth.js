@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({children}){
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [loading, setLoading] = useState(true);
 
