@@ -1,9 +1,9 @@
 # Sistema de Chamados
 
 <div style="display: inline-block">
-  <img src="https://img.shields.io/github/license/wesleysantossts/filmaria?color=brightgreen" />
-  <img src="https://img.shields.io/github/last-commit/wesleysantossts/filmaria.svg" />
-  <img src="https://img.shields.io/github/repo-size/wesleysantossts/filmaria?color=brightgreen" />
+  <img src="https://img.shields.io/github/license/wesleysantossts/sistema-chamados?color=brightgreen" />
+  <img src="https://img.shields.io/github/last-commit/wesleysantossts/sistema-chamados.svg" />
+  <img src="https://img.shields.io/github/repo-size/wesleysantossts/sistema-chamados?color=brightgreen" />
 </div><br/>
 
 Sistema desenvolvido durante o curso de React.
