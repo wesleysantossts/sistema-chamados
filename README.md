@@ -1,5 +1,11 @@
 # Sistema de Chamados
 
+<div style="display: inline-block">
+  <img src="https://img.shields.io/github/license/wesleysantossts/filmaria?color=brightgreen" />
+  <img src="https://img.shields.io/github/last-commit/wesleysantossts/filmaria.svg" />
+  <img src="https://img.shields.io/github/repo-size/wesleysantossts/filmaria?color=brightgreen" />
+</div><br/>
+
 Sistema desenvolvido durante o curso de React.
 
 https://novosistemachamados.netlify.app/
